@@ -31,8 +31,8 @@ namespace NHibernateSandbox.Utils
         {
             var configuration  = Fluently.Configure();
             
-            //ConfigureForSQLite(configuration);
-            ConfigureForMSSQL(configuration);
+            ConfigureForSQLite(configuration);
+            //ConfigureForMSSQL(configuration);
 
             configuration.Mappings((m) =>
                                         {
@@ -51,7 +51,7 @@ namespace NHibernateSandbox.Utils
                                        .ConnectionString("Data Source=gor-laptop;Initial Catalog=NHibernateSandbox;Persist Security Info=True;User ID=sa;Password=sa123456;Asynchronous Processing=true;MultipleActiveResultSets=True")
                                        .Dialect(typeof (NHibernate.Dialect.MsSql2005Dialect).AssemblyQualifiedName)
                                        .Driver(typeof(NHibernate.Driver.SqlClientDriver).AssemblyQualifiedName)
-                                       .ProxyFactoryFactory(typeof(NHibernate.ByteCode.LinFu.ProxyFactoryFactory))
+                                       .ProxyFactoryFactory(typeof(NHibernate.ByteCode.Castle.ProxyFactoryFactory))
                                        .FormatSql()
                                        .ShowSql
                                        );
@@ -60,7 +60,7 @@ namespace NHibernateSandbox.Utils
         private void ConfigureForSQLite(FluentConfiguration configuration)
         {
             configuration.Database( SQLiteConfiguration.Standard
-                                        .ProxyFactoryFactory(typeof(NHibernate.ByteCode.LinFu.ProxyFactoryFactory))
+                                        .ProxyFactoryFactory(typeof(NHibernate.ByteCode.Castle.ProxyFactoryFactory))
                                         .InMemory()
                                         .Dialect(typeof(SQLiteDialect).AssemblyQualifiedName)
                                         .Driver(typeof (SQLite20Driver).AssemblyQualifiedName)
