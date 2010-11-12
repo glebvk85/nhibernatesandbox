@@ -7,6 +7,7 @@ namespace NHibernateSandbox.Model
     {
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
+        public virtual byte[] Photo { get; set; }
     }
 }
 
@@ -18,6 +19,7 @@ namespace NHibernateSandbox.Mappings
         {
             Id(x => x.Id).GeneratedBy.Native("SEQ_PERSON");
             Map(x => x.Name).Length(512);
+            Map(x => x.Photo).LazyLoad();
         }
     }
 }
