@@ -1,0 +1,1 @@
+This solution template allows quickly test mappings and queries on different databases with NHibernate. Project contains base class for unit tests, that configures NHibernate, scans assembly for mappings and opens session. More detailed description can be found on http://gorbach.wordpress.com/2010/09/23/nhibernate-nunit
